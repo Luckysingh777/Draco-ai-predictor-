@@ -1,0 +1,28 @@
+// Show loading animation
+textview1.setText("LOADING...");
+progressbar1.setVisibility(View.VISIBLE); 
+
+// Delay to simulate loading effect
+new Handler().postDelayed(new Runnable() {
+    @Override
+    public void run() {
+        // Generate random number between 1 and 100
+        int randomNum = (int) (Math.random() * 100) + 1;
+
+        // Determine "BIG" or "SMALL"
+        String sizeText = (randomNum >= 50) ? "BIG" : "SMALL";
+
+        // Array of random color emojis
+        String[] colors = {"🔴", "💚", "🔵", "💛", "💜", "⚫"};
+        String randomColor = colors[(int) (Math.random() * colors.length)];
+
+        // Final result string in uppercase
+        String result = randomNum + " " + sizeText + " " + randomColor;
+
+        // Display result
+        textview1.setText(result.toUpperCase());
+
+        // Hide loading animation
+        progressbar1.setVisibility(View.GONE);
+    }
+}, 2000); // 2-second delay for loading effect
